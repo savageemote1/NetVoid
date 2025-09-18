@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login - NetVoid{% endblock %}
+
+{% block content %}
+<section class="admin-login">
+    <div class="container">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>🔐 Admin Access</h1>
+                <p>Secure administrative login</p>
+            </div>
+            
+            <form class="login-form" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                
+                <div class="form-group">
+                    <label for="password">Admin Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter admin password">
+                </div>
+                
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+            
+            <div class="security-info">
+                <h3>🛡️ Security Features</h3>
+                <ul>
+                    <li>✅ CSRF Protection</li>
+                    <li>✅ Rate Limiting</li>
+                    <li>✅ Encrypted Sessions</li>
+                    <li>✅ Secure Headers</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

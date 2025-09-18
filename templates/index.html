@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block title %}NetVoid - Premium Software Access{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1 class="hero-title">Secure Premium Access</h1>
+            <p class="hero-subtitle">Unlock exclusive tools with encrypted NetVoid authentication keys</p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('purchase') }}" class="btn-primary">Get Your Key</a>
+                <a href="#features" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="code-block">
+                <div class="code-header">
+                    <div class="code-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span class="code-title">NetVoid Secure Access</span>
+                </div>
+                <div class="code-content">
+                    <div class="code-line">
+                        <span class="code-comment">// Encrypted Authentication</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="code-keyword">const</span> <span class="code-var">access</span> = <span class="code-string">"SECURE"</span>;
+                    </div>
+                    <div class="code-line">
+                        <span class="code-keyword">const</span> <span class="code-var">encryption</span> = <span class="code-string">"AES-256"</span>;
+                    </div>
+                    <div class="code-line">
+                        <span class="code-function">authenticate</span>(<span class="code-var">encryptedKey</span>);
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="features">
+    <div class="container">
+        <div class="section-header">
+            <h2>Why Choose NetVoid?</h2>
+            <p>Military-grade security with premium features</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>End-to-End Encryption</h3>
+                <p>AES-256 encryption protects all communications and data</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Zero Vulnerabilities</h3>
+                <p>Comprehensive security headers and CSRF protection</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Lightning Fast</h3>
+                <p>Optimized performance with rate limiting protection</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Hardware Binding</h3>
+                <p>Keys are cryptographically bound to your device</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Premium Tools</h3>
+                <p>Access to exclusive Discord bots and Roblox tools</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Auto Updates</h3>
+                <p>Seamless updates with encrypted delivery</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Security Section -->
+<section class="security">
+    <div class="container">
+        <div class="section-header">
+            <h2>Security First</h2>
+            <p>Your security is our top priority</p>
+        </div>
+        <div class="security-grid">
+            <div class="security-item">
+                <div class="security-icon">🔐</div>
+                <h3>AES-256 Encryption</h3>
+                <p>All data encrypted with military-grade encryption</p>
+            </div>
+            <div class="security-item">
+                <div class="security-icon">🛡️</div>
+                <h3>CSRF Protection</h3>
+                <p>Cross-site request forgery protection enabled</p>
+            </div>
+            <div class="security-item">
+                <div class="security-icon">⚡</div>
+                <h3>Rate Limiting</h3>
+                <p>Advanced rate limiting prevents abuse</p>
+            </div>
+            <div class="security-item">
+                <div class="security-icon">🔒</div>
+                <h3>Secure Headers</h3>
+                <p>Comprehensive security headers implemented</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="pricing">
+    <div class="container">
+        <div class="section-header">
+            <h2>Secure Pricing</h2>
+            <p>Choose your security level</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Basic Security</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">9.99</span>
+                        <span class="period">/month</span>
+                    </div>
+                </div>
+                <ul class="pricing-features">
+                    <li>✅ Single device access</li>
+                    <li>✅ Basic Discord tools</li>
+                    <li>✅ Standard encryption</li>
+                    <li>✅ Community support</li>
+                </ul>
+                <a href="{{ url_for('purchase') }}?plan=basic" class="btn-outline">Choose Basic</a>
+            </div>
+            <div class="pricing-card featured">
+                <div class="pricing-badge">Most Secure</div>
+                <div class="pricing-header">
+                    <h3>Premium Security</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">19.99</span>
+                        <span class="period">/month</span>
+                    </div>
+                </div>
+                <ul class="pricing-features">
+                    <li>✅ Up to 3 devices</li>
+                    <li>✅ All Discord tools</li>
+                    <li>✅ Advanced encryption</li>
+                    <li>✅ Priority support</li>
+                    <li>✅ Hardware binding</li>
+                </ul>
+                <a href="{{ url_for('purchase') }}?plan=premium" class="btn-primary">Choose Premium</a>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Maximum Security</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">99.99</span>
+                        <span class="period">/one-time</span>
+                    </div>
+                </div>
+                <ul class="pricing-features">
+                    <li>✅ Unlimited devices</li>
+                    <li>✅ All current & future tools</li>
+                    <li>✅ Military-grade encryption</li>
+                    <li>✅ Direct developer support</li>
+                    <li>✅ Lifetime updates</li>
+                </ul>
+                <a href="{{ url_for('purchase') }}?plan=lifetime" class="btn-outline">Choose Lifetime</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

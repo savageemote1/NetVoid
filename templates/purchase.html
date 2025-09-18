@@ -1,0 +1,398 @@
+{% extends "base.html" %}
+
+{% block title %}Purchase NetVoid Key - Secure Access{% endblock %}
+
+{% block content %}
+<section class="purchase-section">
+    <div class="container">
+        <div class="purchase-container">
+            <div class="purchase-header">
+                <h1>Purchase Your Secure Key</h1>
+                <p>Get instant access to premium features with military-grade security</p>
+            </div>
+
+            <div class="purchase-content">
+                <!-- Plan Selection -->
+                <div class="plan-selection">
+                    <h2>Select Your Security Level</h2>
+                    <div class="plan-options">
+                        <div class="plan-option" data-plan="basic">
+                            <input type="radio" id="basic" name="plan" value="basic">
+                            <label for="basic">
+                                <div class="plan-card">
+                                    <h3>Basic Security</h3>
+                                    <div class="plan-price">
+                                        <span class="currency">$</span>
+                                        <span class="amount">9.99</span>
+                                        <span class="period">/month</span>
+                                    </div>
+                                    <ul class="plan-features">
+                                        <li>✅ Single device access</li>
+                                        <li>✅ Basic Discord tools</li>
+                                        <li>✅ Standard encryption</li>
+                                        <li>✅ Community support</li>
+                                    </ul>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="plan-option" data-plan="premium">
+                            <input type="radio" id="premium" name="plan" value="premium" checked>
+                            <label for="premium">
+                                <div class="plan-card featured">
+                                    <div class="plan-badge">Most Secure</div>
+                                    <h3>Premium Security</h3>
+                                    <div class="plan-price">
+                                        <span class="currency">$</span>
+                                        <span class="amount">19.99</span>
+                                        <span class="period">/month</span>
+                                    </div>
+                                    <ul class="plan-features">
+                                        <li>✅ Up to 3 devices</li>
+                                        <li>✅ All Discord tools</li>
+                                        <li>✅ Advanced encryption</li>
+                                        <li>✅ Priority support</li>
+                                        <li>✅ Hardware binding</li>
+                                    </ul>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="plan-option" data-plan="lifetime">
+                            <input type="radio" id="lifetime" name="plan" value="lifetime">
+                            <label for="lifetime">
+                                <div class="plan-card">
+                                    <h3>Maximum Security</h3>
+                                    <div class="plan-price">
+                                        <span class="currency">$</span>
+                                        <span class="amount">99.99</span>
+                                        <span class="period">/one-time</span>
+                                    </div>
+                                    <ul class="plan-features">
+                                        <li>✅ Unlimited devices</li>
+                                        <li>✅ All current & future tools</li>
+                                        <li>✅ Military-grade encryption</li>
+                                        <li>✅ Direct developer support</li>
+                                        <li>✅ Lifetime updates</li>
+                                    </ul>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Form -->
+                <div class="payment-section">
+                    <h2>Secure Payment Information</h2>
+                    <form class="payment-form" id="paymentForm">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="discord">Discord Username (Optional)</label>
+                            <input type="text" id="discord" name="discord" placeholder="username#1234">
+                        </div>
+
+                        <div class="payment-methods">
+                            <h3>Payment Method</h3>
+                            <div class="payment-options">
+                                <div class="payment-option">
+                                    <input type="radio" id="paypal" name="payment" value="paypal" checked>
+                                    <label for="paypal">
+                                        <div class="payment-card">
+                                            <div class="payment-icon">💳</div>
+                                            <span>PayPal</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="payment-option">
+                                    <input type="radio" id="stripe" name="payment" value="stripe">
+                                    <label for="stripe">
+                                        <div class="payment-card">
+                                            <div class="payment-icon">💳</div>
+                                            <span>Credit Card</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="payment-option">
+                                    <input type="radio" id="crypto" name="payment" value="crypto">
+                                    <label for="crypto">
+                                        <div class="payment-card">
+                                            <div class="payment-icon">₿</div>
+                                            <span>Cryptocurrency</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="terms-section">
+                            <label class="terms-checkbox">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
+                            </label>
+                        </div>
+
+                        <div class="purchase-summary">
+                            <div class="summary-item">
+                                <span>Plan:</span>
+                                <span id="selectedPlan">Premium Security</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Price:</span>
+                                <span id="selectedPrice">$19.99/month</span>
+                            </div>
+                            <div class="summary-total">
+                                <span>Total:</span>
+                                <span id="totalPrice">$19.99</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-purchase">
+                            <span class="btn-text">Complete Secure Purchase</span>
+                            <span class="btn-loading" style="display: none;">Processing...</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Security Features -->
+            <div class="security-features">
+                <h3>🔒 Secure Transaction</h3>
+                <div class="security-grid">
+                    <div class="security-item">
+                        <div class="security-icon">🛡️</div>
+                        <span>SSL Encrypted</span>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-icon">🔐</div>
+                        <span>CSRF Protected</span>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-icon">✅</div>
+                        <span>Instant Delivery</span>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-icon">🔄</div>
+                        <span>30-Day Refund</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Purchase page functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const planOptions = document.querySelectorAll('.plan-option');
+    const selectedPlanElement = document.getElementById('selectedPlan');
+    const selectedPriceElement = document.getElementById('selectedPrice');
+    const totalPriceElement = document.getElementById('totalPrice');
+    const paymentForm = document.getElementById('paymentForm');
+    const purchaseButton = document.querySelector('.btn-purchase');
+    const btnText = document.querySelector('.btn-text');
+    const btnLoading = document.querySelector('.btn-loading');
+
+    // Plan data
+    const plans = {
+        basic: {
+            name: 'Basic Security',
+            price: '$9.99',
+            period: '/month',
+            total: '$9.99'
+        },
+        premium: {
+            name: 'Premium Security',
+            price: '$19.99',
+            period: '/month',
+            total: '$19.99'
+        },
+        lifetime: {
+            name: 'Maximum Security',
+            price: '$99.99',
+            period: '/one-time',
+            total: '$99.99'
+        }
+    };
+
+    // Update plan selection
+    function updatePlanSelection() {
+        const selectedPlan = document.querySelector('input[name="plan"]:checked').value;
+        const plan = plans[selectedPlan];
+        
+        selectedPlanElement.textContent = plan.name;
+        selectedPriceElement.textContent = plan.price + plan.period;
+        totalPriceElement.textContent = plan.total;
+    }
+
+    // Add click handlers to plan options
+    planOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            planOptions.forEach(opt => opt.classList.remove('selected'));
+            this.classList.add('selected');
+            updatePlanSelection();
+        });
+    });
+
+    // Initialize with default selection
+    updatePlanSelection();
+
+    // Form submission
+    paymentForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline';
+        purchaseButton.disabled = true;
+        
+        // Get form data
+        const formData = new FormData(paymentForm);
+        const data = Object.fromEntries(formData.entries());
+        
+        // Submit to server
+        fetch('/api/purchase', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.encrypted_data) {
+                // Decrypt response (in real implementation, this would be done client-side)
+                showSuccessModal('Key generated successfully!', data.encrypted_data);
+            } else if (data.error) {
+                showNotification(data.error, 'error');
+            }
+        })
+        .catch(error => {
+            showNotification('Purchase failed. Please try again.', 'error');
+        })
+        .finally(() => {
+            btnText.style.display = 'inline';
+            btnLoading.style.display = 'none';
+            purchaseButton.disabled = false;
+        });
+    });
+
+    // Show success modal
+    function showSuccessModal(message, encryptedData) {
+        const modal = document.createElement('div');
+        modal.className = 'success-modal';
+        modal.innerHTML = `
+            <div class="modal-overlay">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>🎉 Purchase Successful!</h2>
+                        <button class="modal-close">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Your secure NetVoid key has been generated and encrypted.</p>
+                        <div class="key-display">
+                            <label>Encrypted Key Data:</label>
+                            <div class="key-container">
+                                <textarea readonly class="key-input">${encryptedData}</textarea>
+                                <button class="copy-btn" onclick="copyToClipboard('${encryptedData}')">Copy</button>
+                            </div>
+                        </div>
+                        <div class="next-steps">
+                            <h3>Next Steps:</h3>
+                            <ol>
+                                <li>Download the NetVoid client</li>
+                                <li>Run the application</li>
+                                <li>Enter your encrypted key</li>
+                                <li>Enjoy secure premium features!</li>
+                            </ol>
+                        </div>
+                        <div class="modal-actions">
+                            <button class="btn-primary" onclick="downloadClient()">Download Client</button>
+                            <button class="btn-secondary" onclick="closeModal()">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // Close modal handlers
+        modal.querySelector('.modal-close').addEventListener('click', closeModal);
+        modal.querySelector('.modal-overlay').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        
+        function closeModal() {
+            modal.remove();
+        }
+        
+        // Make functions global
+        window.copyToClipboard = function(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification('Encrypted data copied to clipboard!', 'success');
+            });
+        };
+        
+        window.downloadClient = function() {
+            showNotification('Client download started!', 'success');
+        };
+        
+        window.closeModal = closeModal;
+    }
+
+    // Show notification
+    function showNotification(message, type = 'info') {
+        const existingNotification = document.querySelector('.notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.textContent = message;
+        
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+            max-width: 300px;
+        `;
+        
+        if (type === 'error') {
+            notification.style.background = 'linear-gradient(135deg, #ff6b6b, #ee5a52)';
+        } else if (type === 'success') {
+            notification.style.background = 'linear-gradient(135deg, #51cf66, #40c057)';
+        } else {
+            notification.style.background = 'linear-gradient(135deg, #667eea, #764ba2)';
+        }
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => notification.remove(), 300);
+        }, 5000);
+    }
+});
+</script>
+{% endblock %}
