@@ -10,12 +10,12 @@ Secure premium software access with encrypted authentication keys.
 - **Admin Dashboard**: Complete server management interface
 - **Key Management**: Secure key generation and hardware binding
 
-## 🔧 Setup
+## 🔧 Quick Start
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/NetVoidServer.git
-   cd NetVoidServer
+   git clone https://github.com/savageemote1/NetVoid.git
+   cd NetVoid
    ```
 
 2. **Install dependencies**
@@ -49,7 +49,7 @@ Secure premium software access with encrypted authentication keys.
 
 ## 🔄 Auto-Deployment
 
-The server automatically updates when you push changes to the main branch:
+The server automatically updates when you push changes to the master branch:
 
 1. Push changes to GitHub
 2. GitHub Actions builds the deployment
@@ -65,18 +65,18 @@ python secure_web_server.py
 
 ### Auto-Updater
 ```bash
-python update_system.py
+python local_updater.py
 ```
 
-### Deployment
+### GitHub Integration
 ```bash
-python deploy_server.py
+python update_system.py
 ```
 
 ## 📁 Project Structure
 
 ```
-NetVoidServer/
+NetVoid/
 ├── server/                 # NetVoid server components
 ├── client/                 # Client applications
 ├── templates/              # Website templates
