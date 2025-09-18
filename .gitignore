@@ -1,0 +1,48 @@
+# NetVoid Server .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Server files
+server/valid_keys.json
+server/server_keys.json
+purchases.json
+*.log
+
+# Deployment
+deployment/
+backup/
+temp_update/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+
+# Logs
+logs/
+*.log

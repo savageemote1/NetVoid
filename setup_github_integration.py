@@ -96,7 +96,7 @@ logs/
 *.log
 """
     
-    with open('.gitignore', 'w') as f:
+    with open('.gitignore', 'w', encoding='utf-8') as f:
         f.write(gitignore_content)
     print("✅ .gitignore created")
 
@@ -207,7 +207,7 @@ For support and updates, contact the development team.
 NetVoid - Secure, Server-Dependent Application System
 """
     
-    with open('README.md', 'w') as f:
+    with open('README.md', 'w', encoding='utf-8') as f:
         f.write(readme_content)
     print("✅ README.md created")
 
@@ -301,7 +301,7 @@ jobs:
 """
     
     workflow_file = workflow_dir / 'deploy.yml'
-    with open(workflow_file, 'w') as f:
+    with open(workflow_file, 'w', encoding='utf-8') as f:
         f.write(workflow_content)
     print("✅ GitHub Actions workflow created")
 
@@ -326,7 +326,7 @@ PORT=8080
 DEBUG=False
 """
     
-    with open('.env.template', 'w') as f:
+    with open('.env.template', 'w', encoding='utf-8') as f:
         f.write(env_content)
     print("✅ Environment template created")
 
@@ -358,7 +358,7 @@ echo "✅ Pre-commit checks passed"
 """
     
     pre_commit_file = hooks_dir / 'pre-commit'
-    with open(pre_commit_file, 'w') as f:
+    with open(pre_commit_file, 'w', encoding='utf-8') as f:
         f.write(pre_commit_hook)
     pre_commit_file.chmod(0o755)
     
@@ -371,7 +371,7 @@ echo "💡 To deploy changes, run: python deploy_server.py"
 """
     
     post_commit_file = hooks_dir / 'post-commit'
-    with open(post_commit_file, 'w') as f:
+    with open(post_commit_file, 'w', encoding='utf-8') as f:
         f.write(post_commit_hook)
     post_commit_file.chmod(0o755)
     
