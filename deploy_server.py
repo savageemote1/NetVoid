@@ -21,6 +21,7 @@ BACKUP_DIR = "backup"
 SERVER_DIR = "."
 WEBHOOK_PORT = 8081
 GITHUB_WEBHOOK_SECRET = os.getenv('GITHUB_WEBHOOK_SECRET', 'NetVoid2024Secret!')
+GITHUB_REPO = os.getenv('GITHUB_REPO', 'savageemote1/NetVoid')
 
 class NetVoidDeployer:
     def __init__(self):

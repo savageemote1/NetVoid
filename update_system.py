@@ -15,7 +15,7 @@ from datetime import datetime
 from pathlib import Path
 
 # Configuration
-GITHUB_REPO = "your-username/NetVoidServer"  # Replace with your actual repo
+GITHUB_REPO = os.getenv('GITHUB_REPO', 'savageemote1/NetVoid')  # Set via environment variable
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN', '')
 CHECK_INTERVAL = 300  # Check every 5 minutes
 WEBHOOK_URL = "http://localhost:8081/webhook"
@@ -36,18 +36,26 @@ class NetVoidUpdater:
     def get_latest_commit(self):
         """Get latest commit from GitHub"""
         try:
-            url = f"https://api.github.com/repos/{GITHUB_REPO}/commits/main"
-            headers = {}
-            if GITHUB_TOKEN:
-                headers['Authorization'] = f'token {GITHUB_TOKEN}'
-                
-            response = requests.get(url, headers=headers, timeout=10)
-            if response.status_code == 200:
-                data = response.json()
-                return data['sha']
-            else:
-                self.log(f"Failed to get latest commit: {response.status_code}")
-                return None
+            # Try main branch first, then master
+            for branch in ['main', 'master']:
+                url = f"https://api.github.com/repos/{GITHUB_REPO}/commits/{branch}"
+                headers = {}
+                if GITHUB_TOKEN:
+                    headers['Authorization'] = f'token {GITHUB_TOKEN}'
+                    
+                response = requests.get(url, headers=headers, timeout=10)
+                if response.status_code == 200:
+                    data = response.json()
+                    return data['sha']
+                elif response.status_code == 404:
+                    self.log(f"Repository or branch '{branch}' not found: {GITHUB_REPO}")
+                    continue
+                else:
+                    self.log(f"Failed to get latest commit from {branch}: {response.status_code}")
+                    continue
+                    
+            self.log("No valid branch found (tried main and master)")
+            return None
         except Exception as e:
             self.log(f"Error getting latest commit: {e}")
             return None
