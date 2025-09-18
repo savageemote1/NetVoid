@@ -49,7 +49,7 @@ Secure premium software access with encrypted authentication keys.
 
 ## 🔄 Auto-Deployment
 
-The server automatically updates when you push changes to the master branch:
+The server automatically updates when you push changes to the main branch:
 
 1. Push changes to GitHub
 2. GitHub Actions builds the deployment
@@ -73,6 +73,11 @@ python local_updater.py
 python update_system.py
 ```
 
+### Two-Way Sync
+```bash
+python github_sync.py
+```
+
 ## 📁 Project Structure
 
 ```
@@ -85,7 +90,9 @@ NetVoid/
 ├── .github/workflows/      # GitHub Actions
 ├── secure_web_server.py    # Main server
 ├── deploy_server.py        # Deployment script
-└── update_system.py        # Auto-updater
+├── update_system.py        # Auto-updater
+├── github_sync.py          # Two-way sync
+└── webhook_receiver.py     # Webhook receiver
 ```
 
 ## 🔒 Security Notes
