@@ -20,7 +20,7 @@ from urllib import request, error
 from threading import Thread
 
 # Encrypted configuration
-_SERVER_URL = "http://127.0.0.1:8000"
+_SERVER_URL = "http://127.0.0.1:8080"
 _ENCRYPTION_KEY = "NetVoid2024SecretKey!@#"
 _APP_WIDTH = 820
 _APP_HEIGHT = 520

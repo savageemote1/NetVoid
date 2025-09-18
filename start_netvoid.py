@@ -1,46 +1,44 @@
 #!/usr/bin/env python3
 """
-NetVoid Server with GitHub Integration
-Starts the server with automatic updates from GitHub
+NetVoid Server Startup Script
+Starts the complete NetVoid system with GitHub integration
 """
 
 import os
 import sys
+import subprocess
 import time
 import threading
-import subprocess
 from pathlib import Path
 
 def print_banner():
     print("=" * 70)
-    print("    NETVOID SERVER WITH GITHUB INTEGRATION")
+    print("    NETVOID SERVER - SECURE KEY MANAGEMENT SYSTEM")
     print("=" * 70)
     print()
 
-def start_webhook_server():
-    """Start webhook server for GitHub integration"""
-    print("🔗 Starting webhook server...")
+def start_webhook_receiver():
+    """Start webhook receiver for GitHub integration"""
+    print("🔗 Starting webhook receiver...")
     try:
-        subprocess.Popen([
-            sys.executable, 'deploy_server.py', 'webhook'
-        ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        print("✅ Webhook server started on port 8081")
+        subprocess.Popen([sys.executable, 'webhook_receiver.py'], 
+                        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        print("✅ Webhook receiver started on port 8081")
         return True
     except Exception as e:
-        print(f"❌ Failed to start webhook server: {e}")
+        print(f"❌ Failed to start webhook receiver: {e}")
         return False
 
-def start_auto_updater():
-    """Start auto-updater"""
-    print("🔄 Starting auto-updater...")
+def start_github_sync():
+    """Start GitHub two-way sync"""
+    print("🔄 Starting GitHub sync...")
     try:
-        subprocess.Popen([
-            sys.executable, 'update_system.py'
-        ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        print("✅ Auto-updater started")
+        subprocess.Popen([sys.executable, 'github_sync.py'], 
+                        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        print("✅ GitHub sync started")
         return True
     except Exception as e:
-        print(f"❌ Failed to start auto-updater: {e}")
+        print(f"❌ Failed to start GitHub sync: {e}")
         return False
 
 def start_main_server():
@@ -60,51 +58,61 @@ def main():
     """Main function"""
     print_banner()
     
-    print("🔧 Starting NetVoid with GitHub integration...")
+    print("🔧 Starting NetVoid Server System...")
     print()
     
     # Check if required files exist
     required_files = [
         'secure_web_server.py',
-        'deploy_server.py',
-        'update_system.py'
+        'github_sync.py',
+        'webhook_receiver.py',
+        'client/encrypted_main.py'
     ]
     
     for file in required_files:
         if not os.path.exists(file):
             print(f"❌ Required file not found: {file}")
-            print("Please run setup_github_integration.py first")
             return
     
     print("✅ All required files found")
     print()
     
-    # Start webhook server
-    if not start_webhook_server():
-        print("⚠️  Webhook server failed to start - continuing without it")
+    # Start webhook receiver
+    if not start_webhook_receiver():
+        print("⚠️  Webhook receiver failed to start - continuing without it")
     
     time.sleep(2)
     
-    # Start auto-updater
-    if not start_auto_updater():
-        print("⚠️  Auto-updater failed to start - continuing without it")
+    # Start GitHub sync
+    if not start_github_sync():
+        print("⚠️  GitHub sync failed to start - continuing without it")
     
     time.sleep(2)
     
     print()
     print("🌐 NetVoid Server URLs:")
-    print("   • Homepage: http://localhost:8080")
+    print("   • Website: http://localhost:8080")
     print("   • Purchase: http://localhost:8080/purchase")
     print("   • Admin: http://localhost:8080/admin")
     print("   • API: http://localhost:8080/api/status")
     print("   • Webhook: http://localhost:8081/webhook")
+    print()
+    print("🔑 Key Management:")
+    print("   • Generate keys via admin panel")
+    print("   • Client connects to server automatically")
+    print("   • Keys are encrypted and hardware-bound")
+    print()
+    print("🔄 Auto-Sync Features:")
+    print("   • Local changes → GitHub (automatic)")
+    print("   • GitHub changes → Local (automatic)")
+    print("   • Server restarts on changes")
     print()
     print("🔒 Security Features:")
     print("   • AES-256 Encryption")
     print("   • CSRF Protection")
     print("   • Rate Limiting")
     print("   • Security Headers")
-    print("   • Auto-Updates from GitHub")
+    print("   • Hardware ID Binding")
     print()
     print("Press Ctrl+C to stop all services")
     print()

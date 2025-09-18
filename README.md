@@ -58,22 +58,17 @@ The server automatically updates when you push changes to the main branch:
 
 ## 🛠️ Development
 
-### Local Development
+### Start Complete System
 ```bash
-python secure_web_server.py
+python start_netvoid.py
 ```
 
-### Auto-Updater
+### Start Client Only
 ```bash
-python local_updater.py
+python start_client.py
 ```
 
-### GitHub Integration
-```bash
-python update_system.py
-```
-
-### Two-Way Sync
+### GitHub Two-Way Sync
 ```bash
 python github_sync.py
 ```
@@ -88,11 +83,12 @@ NetVoid/
 ├── static/                 # Static assets
 ├── config/                 # Configuration files
 ├── .github/workflows/      # GitHub Actions
-├── secure_web_server.py    # Main server
-├── deploy_server.py        # Deployment script
-├── update_system.py        # Auto-updater
+├── start_netvoid.py        # Main startup script
+├── start_client.py         # Client launcher
+├── secure_web_server.py    # Web server
 ├── github_sync.py          # Two-way sync
-└── webhook_receiver.py     # Webhook receiver
+├── webhook_receiver.py     # Webhook receiver
+└── deploy_server.py        # Deployment script
 ```
 
 ## 🔒 Security Notes
