@@ -9,6 +9,7 @@ Secure premium software access with encrypted authentication keys.
 - **Auto-Deployment**: Automatic updates from GitHub Codespaces
 - **Admin Dashboard**: Complete server management interface
 - **Key Management**: Secure key generation and hardware binding
+- **Real-Time Sync**: Live updates between local and GitHub
 
 ## 🔧 Quick Start
 
